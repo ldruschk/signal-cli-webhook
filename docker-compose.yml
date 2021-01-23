@@ -1,0 +1,12 @@
+version: "2"
+
+services:
+  web:
+    build: .
+    command: gunicorn --bind 0.0.0.0:5000 server:app
+    ports:
+      - 5000:5000
+    env_file:
+      - .env
+    volumes:
+      - /home/lucas/.local/share/signal-cli/:/root/.local/share/signal-cli/
