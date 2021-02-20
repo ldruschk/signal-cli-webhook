@@ -19,12 +19,12 @@ def webhook(secret):
         return "wrong auth secret"
     obj = request.get_json()
     print(obj)
-    message = f"""{obj["title"]}
-Message: {obj["message"]}
+    message = f"""{obj.get("title")}
+Message: {obj.get("message")}
 
 Metrics:"""
     for m in obj["evalMatches"]:
-        message += f"\n{m['metric']}: {m['value']}"
+        message += f"\n{m.get('metric')}: {m.get('value')}"
 
     subprocess.run(["signal-cli", "-u", SIGNAL_USER, "send", "-g", SIGNAL_GROUP], input=message.encode())
 
