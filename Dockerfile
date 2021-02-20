@@ -14,5 +14,6 @@ RUN mkdir -p /usr/share/man/man1 && \
     ln -sf /opt/signal-cli-"${SIGNAL_CLI_VERSION}"/bin/signal-cli /usr/local/bin/ && \
     rm signal-cli-"${SIGNAL_CLI_VERSION}".tar.gz && \
     apt-get remove -y python3-pip curl && \
+    apt-get autoremove -y && \
     rm -rf /var/lib/apt/lists/*
 ADD server.py .
